@@ -2,9 +2,10 @@ import { React, useState, useEffect, useRef, useMemo, useCallback } from '../uti
 import { Navigation } from './landing/navigation.jsx';
 import { FinalCTA, Footer } from './landing/site_sections.jsx';
 import { FeatureGrid, HowItWorks } from './landing/product_sections.jsx';
+import { useCountUp, useReveal } from './landing/hooks.js';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
-function useReveal(){
+function legacyUseReveal(){
   useEffect(()=>{
     const els = document.querySelectorAll('.js-reveal');
     const io = new IntersectionObserver((entries)=>{
@@ -20,7 +21,7 @@ function useReveal(){
   });
 }
 
-function useCountUp(target, duration=1400, trigger=true){
+function legacyUseCountUp(target, duration=1400, trigger=true){
   const [val, setVal] = useState(0);
   const ref = useRef(null);
   useEffect(()=>{
