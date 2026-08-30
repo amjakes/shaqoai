@@ -24,7 +24,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Text('JM', style: TextStyle(fontSize: 20)))),
         const SizedBox(height: 12),
         const Center(
-            child: Text('James Murila',
+            child: Text('Jakes Murila',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800))),
         const Center(
             child: Text('Workspace owner', style: TextStyle(color: appMuted))),

@@ -19,7 +19,7 @@ class DashboardScreen extends StatelessWidget {
                   children: [
                 StatusPill('ALL SYSTEMS OPERATIONAL'),
                 SizedBox(height: 12),
-                Text('Good morning, James.',
+                Text('Good morning, Jakes.',
                     style:
                         TextStyle(fontWeight: FontWeight.w800, fontSize: 25)),
                 SizedBox(height: 6),

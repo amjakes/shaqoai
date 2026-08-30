@@ -7,6 +7,7 @@ import 'agents_hub_screen.dart';
 import 'calendar_screen.dart';
 import 'dashboard_screen.dart';
 import 'finance_ledger_screen.dart';
+import 'whatsapp_agents_sheet.dart';
 
 class WorkspaceShell extends StatefulWidget {
   const WorkspaceShell({super.key});
@@ -36,6 +37,14 @@ class _WorkspaceShellState extends State<WorkspaceShell> {
             context, MaterialPageRoute(builder: (_) => const ProfileScreen())),
       ),
       body: SafeArea(top: false, child: pages[index]),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => showWhatsAppAgents(context),
+        backgroundColor: const Color(0xFF25D366),
+        foregroundColor: appBackground,
+        icon: const Icon(Icons.chat_rounded),
+        label: const Text('WhatsApp',
+            style: TextStyle(fontWeight: FontWeight.w800)),
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
         onDestinationSelected: (value) => setState(() => index = value),
