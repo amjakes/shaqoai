@@ -974,4 +974,3 @@ export function App(){
     </>
   );
 }
-
