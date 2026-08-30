@@ -49,22 +49,42 @@ class MetricGrid extends StatelessWidget {
   const MetricGrid({super.key});
 
   @override
-  Widget build(BuildContext context) => GridView.count(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        crossAxisCount: MediaQuery.sizeOf(context).width > 650 ? 4 : 2,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 1.18,
-        children: const [
-          _Metric(
-              '1,284', 'Tasks completed', Icons.bolt_rounded, appCyan, '+18%'),
-          _Metric('KES 420K', 'Value protected', Icons.trending_up_rounded,
-              appGreen, '+12%'),
-          _Metric('7', 'Active agents', Icons.hub_rounded, appViolet, 'Live'),
-          _Metric('2', 'Approvals waiting', Icons.security_rounded, appAmber,
-              'Review'),
-        ],
+  Widget build(BuildContext context) => Glass(
+        padding: const EdgeInsets.fromLTRB(16, 18, 16, 12),
+        child: Column(children: [
+          const Row(children: [
+            Text('Metrics Overview',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
+            Spacer(),
+            Text('View all',
+                style: TextStyle(
+                    color: appGreen, fontWeight: FontWeight.w700)),
+            SizedBox(width: 3),
+            Icon(Icons.chevron_right_rounded, color: appGreen),
+          ]),
+          const SizedBox(height: 22),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(children: const [
+              SizedBox(
+                  width: 132,
+                  child: _Metric('1,284', 'Tasks completed',
+                      Icons.bolt_rounded, appCyan, '+18%')),
+              SizedBox(
+                  width: 142,
+                  child: _Metric('KES 420K', 'Value protected',
+                      Icons.trending_up_rounded, appGreen, '+12%')),
+              SizedBox(
+                  width: 126,
+                  child: _Metric('7', 'Active agents', Icons.hub_rounded,
+                      appViolet, 'Live')),
+              SizedBox(
+                  width: 146,
+                  child: _Metric('2', 'Approvals waiting',
+                      Icons.security_rounded, appAmber, 'Review')),
+            ]),
+          ),
+        ]),
       );
 }
 
@@ -75,21 +95,54 @@ class _Metric extends StatelessWidget {
   final Color color;
 
   @override
-  Widget build(BuildContext context) => Glass(
-        padding: const EdgeInsets.all(11),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Icon(icon, color: color, size: 16),
-            Text(trend,
-                style: TextStyle(
-                    color: color, fontSize: 9, fontWeight: FontWeight.w800)),
-          ]),
-          const Spacer(),
+  Widget build(BuildContext context) => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 82,
+            height: 82,
+            child: Stack(clipBehavior: Clip.none, children: [
+              Center(
+                  child: Container(
+                width: 74,
+                height: 74,
+                decoration: BoxDecoration(
+                    color: Colors.white.withValues(alpha: .1),
+                    shape: BoxShape.circle),
+                child: Icon(icon, color: Colors.white, size: 37),
+              )),
+              Positioned(
+                top: 0,
+                right: -2,
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+                  decoration: BoxDecoration(
+                    color: appSurface,
+                    borderRadius: BorderRadius.circular(18),
+                    border: Border.all(color: color, width: 2),
+                    boxShadow: [
+                      BoxShadow(color: color.withValues(alpha: .2), blurRadius: 8)
+                    ],
+                  ),
+                  child: Text(trend,
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800)),
+                ),
+              ),
+            ]),
+          ),
+          const SizedBox(height: 11),
           Text(value,
-              style:
-                  const TextStyle(fontSize: 18, fontWeight: FontWeight.w800)),
-          Text(label, style: const TextStyle(fontSize: 10, color: appMuted)),
-        ]),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+          const SizedBox(height: 3),
+          Text(label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 12, color: Colors.white)),
+        ],
       );
 }
 

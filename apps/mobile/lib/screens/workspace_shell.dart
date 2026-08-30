@@ -42,8 +42,8 @@ class _WorkspaceShellState extends State<WorkspaceShell> {
         backgroundColor: const Color(0xFF25D366),
         foregroundColor: appBackground,
         icon: const Icon(Icons.chat_rounded),
-        label: const Text('WhatsApp',
-            style: TextStyle(fontWeight: FontWeight.w800)),
+        label:
+            const Text('Chats', style: TextStyle(fontWeight: FontWeight.w800)),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: index,
