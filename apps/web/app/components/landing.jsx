@@ -4,6 +4,7 @@ import { FinalCTA, Footer } from './landing/site_sections.jsx';
 import { FeatureGrid, HowItWorks } from './landing/product_sections.jsx';
 import { useCountUp, useReveal } from './landing/hooks.js';
 import { activityEvents as ACTIVITY_EVENTS, agentTabs as AGENT_TABS, agents as AGENTS, integrations as INTEGRATIONS } from './landing/agent_data.js';
+import { Pricing } from './landing/pricing.jsx';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
 function legacyUseReveal(){
@@ -858,7 +859,7 @@ function LegacyHowItWorks(){
 
 
 /* ---------------- Pricing ---------------- */
-function Pricing(){
+function LegacyPricing(){
   const [annual, setAnnual] = useState(true);
   const plans = [
     { name:'Starter', desc:'For small teams beginning automation.', monthly:0, popular:false, features:['1 AI agent','Core integrations','Email support','Basic audit log']},
