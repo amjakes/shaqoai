@@ -1,4 +1,5 @@
 import { React, useState, useEffect, useRef, useMemo, useCallback } from '../utils/runtime.js';
+import { Navigation } from './landing/navigation.jsx';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
 function useReveal(){
@@ -143,7 +144,7 @@ const AI_EMPLOYEES = [
 
 
 /* ---------------- Nav ---------------- */
-function Nav(){
+function LegacyNav(){
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(()=>{
@@ -950,7 +951,7 @@ export function App(){
   useReveal();
   return (
     <>
-      <Nav/>
+      <Navigation/>
       <Hero/>
       <ImpactMetrics/>
       <AgentShowcase/>
