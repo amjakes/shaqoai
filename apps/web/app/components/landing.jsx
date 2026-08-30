@@ -3,6 +3,7 @@ import { Navigation } from './landing/navigation.jsx';
 import { FinalCTA, Footer } from './landing/site_sections.jsx';
 import { FeatureGrid, HowItWorks } from './landing/product_sections.jsx';
 import { useCountUp, useReveal } from './landing/hooks.js';
+import { activityEvents as ACTIVITY_EVENTS, agentTabs as AGENT_TABS, agents as AGENTS, integrations as INTEGRATIONS } from './landing/agent_data.js';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
 function legacyUseReveal(){
@@ -60,7 +61,7 @@ const Icon = {
 };
 
 /* ---------------- Data ---------------- */
-const AGENTS = [
+const LEGACY_AGENTS = [
   { key:'exec', name:'Executive Agent', status:'Active', work:'6 tasks queued', color:'#1E4FA0', icon:Icon.calendar, angle:-90 },
   { key:'sales', name:'Sales Agent', status:'Working', work:'3 qualified leads', color:'#2E7BD6', icon:Icon.users, angle:-18 },
   { key:'finance', name:'Finance Agent', status:'Processing', work:'12 transactions', color:'#14B8A6', icon:Icon.wallet, angle:54 },
@@ -69,7 +70,7 @@ const AGENTS = [
 ];
 
 
-const ACTIVITY_EVENTS = [
+const LEGACY_ACTIVITY_EVENTS = [
   {t:'09:42', who:'Sales Agent', what:'Lead captured from WhatsApp', color:'#2E7BD6'},
   {t:'09:43', who:'Support Agent', what:'Customer request classified', color:'#F59E0B'},
   {t:'09:44', who:'Finance Agent', what:'M-Pesa payment matched to invoice', color:'#14B8A6'},
@@ -78,7 +79,7 @@ const ACTIVITY_EVENTS = [
   {t:'09:49', who:'Finance Agent', what:'Payment queued for approval', color:'#14B8A6'},
 ];
 
-const AGENT_TABS = {
+const LEGACY_AGENT_TABS = {
   sales: {
     label:'Sales Agent',
     steps:['Lead Capture — WhatsApp','Qualification — AI Analysis','CRM Sync — HubSpot','Follow-up — Scheduled'],
@@ -101,7 +102,7 @@ const AGENT_TABS = {
   }
 };
 
-const INTEGRATIONS = ['M-Pesa','WhatsApp','Gmail','Google Calendar','Microsoft Outlook','HubSpot','Shopify','PostgreSQL'];
+const LEGACY_INTEGRATIONS = ['M-Pesa','WhatsApp','Gmail','Google Calendar','Microsoft Outlook','HubSpot','Shopify','PostgreSQL'];
 
 const DEPT_COLORS = {
   'Sales & Business Development':'#1E4FA0',
