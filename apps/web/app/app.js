@@ -1,4 +1,4 @@
-import { App } from './components/landing.jsx';
+import { App } from './components/main.jsx';
 import { AuthPage } from './components/auth.jsx';
 import { React, ReactDOM } from './utils/runtime.js';
 
