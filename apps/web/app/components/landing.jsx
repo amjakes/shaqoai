@@ -1,5 +1,6 @@
 import { React, useState, useEffect, useRef, useMemo, useCallback } from '../utils/runtime.js';
 import { Navigation } from './landing/navigation.jsx';
+import { FinalCTA, Footer } from './landing/site_sections.jsx';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
 function useReveal(){
@@ -892,7 +893,7 @@ function Pricing(){
 
 
 /* ---------------- Final CTA ---------------- */
-function FinalCTA(){
+function LegacyFinalCTA(){
   return (
     <section className="relative py-28 px-5 bg-gradient-to-br from-[#0B1220] to-[#13294B] overflow-hidden">
       <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 800 300" preserveAspectRatio="none">
@@ -914,7 +915,7 @@ function FinalCTA(){
 }
 
 /* ---------------- Footer ---------------- */
-function Footer(){
+function LegacyFooter(){
   const cols = {
     Product:['AI Workforce','Agents','Automations','Integrations','Pricing'],
     Solutions:['Sales','Customer Support','Finance','Operations'],
