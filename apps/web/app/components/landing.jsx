@@ -1,6 +1,7 @@
 import { React, useState, useEffect, useRef, useMemo, useCallback } from '../utils/runtime.js';
 import { Navigation } from './landing/navigation.jsx';
 import { FinalCTA, Footer } from './landing/site_sections.jsx';
+import { FeatureGrid, HowItWorks } from './landing/product_sections.jsx';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
 function useReveal(){
@@ -617,7 +618,7 @@ function Integrations(){
 
 
 /* ---------------- Feature Grid ---------------- */
-function FeatureGrid(){
+function LegacyFeatureGrid(){
   const features = [
     { icon:Icon.bolt, title:'Autonomous Workflows', d:'Let AI agents execute repetitive operational workflows end-to-end, from trigger to completion.'},
     { icon:Icon.users, title:'Multi-Agent Teams', d:'Multiple specialized agents collaborate on complex, cross-functional tasks.'},
@@ -827,7 +828,7 @@ function Security(){
 
 
 /* ---------------- How It Works ---------------- */
-function HowItWorks(){
+function LegacyHowItWorks(){
   const steps = [
     {n:'01', t:'Connect', d:'Connect the tools your business already uses.'},
     {n:'02', t:'Configure', d:'Define workflows, permissions, and business rules.'},
