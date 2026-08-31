@@ -1,6 +1,6 @@
 {
-  "installCommand": "pnpm install --frozen-lockfile=false",
-  "buildCommand": "pnpm --filter @shaqoai/web build",
+  "installCommand": "npm install --no-audit --no-fund",
+  "buildCommand": "npm --prefix apps/web run build",
   "outputDirectory": "apps/web/dist",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
