@@ -1,0 +1,7 @@
+apps/mobile/
+apps/backend/
+packages/
+node_modules/
+dist/
+.vite/
+.dart_tool/

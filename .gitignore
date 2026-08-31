@@ -5,3 +5,5 @@ apps/backend/.venv/
 __pycache__/
 .dart_tool/
 .flutter-plugins
+
+.vercel
