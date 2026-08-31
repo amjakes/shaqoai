@@ -5,6 +5,7 @@ import { FeatureGrid, HowItWorks } from './product_sections.jsx';
 import { useCountUp, useReveal } from './hooks.js';
 import { activityEvents as ACTIVITY_EVENTS, agentTabs as AGENT_TABS, agents as AGENTS, integrations as INTEGRATIONS } from './agent_data.js';
 import { Pricing } from './pricing.jsx';
+import { WhatsAppLauncher } from './whatsapp_launcher.jsx';
 const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 
 function legacyUseReveal(){
@@ -971,6 +972,7 @@ export function App(){
       <Pricing/>
       <FinalCTA/>
       <Footer/>
+      <WhatsAppLauncher/>
     </>
   );
 }
