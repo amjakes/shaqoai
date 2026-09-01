@@ -32,3 +32,6 @@ h1,h2,h3{letter-spacing:-.035em;text-wrap:balance;}h1{filter:drop-shadow(0 6px 2
 @media (max-width:1199px){.hero-activity{right:-2%;}.hero-workflow{left:3%;}.hero-agent--manager{right:-3%;}.hero-agent--finance{right:-4%;}.hero-chart--top{left:40%;}}
 @media (max-width:1023px){.hero-visual{max-width:760px;margin:1.75rem auto 0;}.hero-network{min-height:500px;}.hero-agent--manager{right:4%;}.hero-agent--finance{right:3%;}.hero-activity{right:3%;}.hero-workflow{left:8%;}}
 @media (max-width:640px){.hero-network{min-height:390px;transform:scale(.82);transform-origin:top center;margin-bottom:-72px;}.hero-visual__label{text-align:center;margin-left:0;}.hero-agent b{font-size:.61rem;}.hero-agent small{font-size:.52rem;}.hero-workflow{left:4%;}.hero-activity{right:0;}.hero-chart--top{left:39%;}.hero-chart--bottom{left:5%;}.hero-agent--data{left:-2%;}.hero-agent--manager{right:-4%;}.hero-agent--finance{right:-5%;}}
+
+/* Core logo aligns with the network-vector origin without a surrounding card. */
+.hero-core{left:52.37%;top:50.67%;}.hero-core__logo{display:block;width:72px;height:72px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(34,211,238,.58));}

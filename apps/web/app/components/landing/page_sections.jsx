@@ -237,10 +237,7 @@ function DeploymentCenter(){
         {[['398','304'],['420','92'],['670','108'],['690','350'],['670','476'],['142','500'],['90','230'],['130','168']].map(([cx,cy],i)=><circle key={i} cx={cx} cy={cy} r={i ? '3' : '5'} fill={i ? '#67e8f9' : '#fff'} />)}
       </svg>
       <div className="hero-core float">
-        <div className="hero-core__tile">
-          <img src={LOGO_SRC} alt="ShaqoAI" className="w-14 h-14 object-cover rounded-lg"/>
-          <span>Core</span>
-        </div>
+        <img src={LOGO_SRC} alt="ShaqoAI" className="hero-core__logo"/>
       </div>
       {agents.map((agent,i)=>{
         const AgentIcon = agent.icon;
@@ -264,8 +261,6 @@ function DeploymentCenter(){
         <div className="hero-panel__title">Autonomous Activity</div>
         {activity.map(([time,agent,event,color])=><div className="hero-activity__item" key={time+agent}><i style={{background:color}}/><div><small>{time} · {agent}</small><b>{event}</b></div></div>)}
       </div>
-      <div className="hero-chart hero-chart--top"><small>Transaction Volume</small><svg viewBox="0 0 160 54" aria-hidden="true"><path d="M0 47 C15 44 18 25 31 35 S48 45 60 18 S76 39 91 26 S109 35 123 12 S143 28 160 4"/><path className="hero-chart__fill" d="M0 47 C15 44 18 25 31 35 S48 45 60 18 S76 39 91 26 S109 35 123 12 S143 28 160 4 V54 H0Z"/></svg></div>
-      <div className="hero-chart hero-chart--bottom"><small>Transaction Volume</small><svg viewBox="0 0 160 54" aria-hidden="true"><path d="M0 44 C13 39 21 18 35 35 S54 44 65 27 S78 41 92 23 S111 30 123 18 S145 27 160 6"/><path className="hero-chart__fill" d="M0 44 C13 39 21 18 35 35 S54 44 65 27 S78 41 92 23 S111 30 123 18 S145 27 160 6 V54 H0Z"/></svg></div>
       <div className="hero-hub"><span className="hero-hub__label">Agent Hub</span><span className="hero-hub__core"/><span className="hero-hub__node hero-hub__node--a">Security Agent</span><span className="hero-hub__node hero-hub__node--b">QA Agent</span><span className="hero-hub__node hero-hub__node--c">Market Analyst</span></div>
     </div>
   );
