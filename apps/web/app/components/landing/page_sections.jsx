@@ -301,6 +301,14 @@ function WorkflowPanel(){
   );
 }
 
+
+/* ---------------- Activity Feed ---------------- */
+function ActivityFeed(){
+  const [items, setItems] = useState(ACTIVITY_EVENTS.slice(0,3));
+  const idx = useRef(3);
+  useEffect(()=>{
+    const iv = setInterval(()=>{
+      setItems(prev=>{
         const next = [...prev, ACTIVITY_EVENTS[idx.current % ACTIVITY_EVENTS.length]];
         idx.current++;
         return next.slice(-4);
