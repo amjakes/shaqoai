@@ -23,5 +23,3 @@ export const agentTabs = {
   finance: { label: 'Finance Agent', steps: ['M-Pesa Transaction', 'Transaction Matching', 'Invoice Verification', 'Human Approval', 'Receipt Issued'], integrations: 'Daraja API → ShaqoAI → Accounting' },
   executive: { label: 'Executive Agent', steps: ['Email Received', 'Prioritization', 'Task Creation', 'Calendar Update', 'Team Follow-up'], integrations: 'Gmail / Outlook → ShaqoAI → Calendar' },
 };
-
-export const integrations = ['M-Pesa', 'WhatsApp', 'Gmail', 'Google Calendar', 'Microsoft Outlook', 'HubSpot', 'Shopify', 'PostgreSQL'];
