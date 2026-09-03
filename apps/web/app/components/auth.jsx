@@ -4,7 +4,18 @@ const LOGO_SRC = document.querySelector('link[rel="icon"]').href;
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function FormInput({ label, type = 'text', value, onChange, error, children }) {
-  return ials">
+  return <label className="auth-field">
+    <span>{label}</span>
+    <div className={`auth-input-wrap ${error ? 'auth-input-wrap--error' : ''}`}>
+      <input type={type} value={value} onChange={onChange} aria-invalid={!!error} aria-describedby={error ? `${label}-error` : undefined} />
+      {children}
+    </div>
+    {error && <em id={`${label}-error`} role="alert">{error}</em>}
+  </label>;
+}
+
+function SocialButtons() {
+  return <div className="auth-socials">
     <button type="button" onClick={() => {}}><span className="auth-social-icon">G</span> Continue with Google</button>
     <button type="button" onClick={() => {}}><span className="auth-social-icon auth-social-icon--m">▣</span> Continue with Microsoft</button>
   </div>;
