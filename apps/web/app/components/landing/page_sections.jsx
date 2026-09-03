@@ -619,18 +619,7 @@ function Integrations(){
 /* ---------------- Feature Grid ---------------- */
 function LegacyFeatureGrid(){
   const features = [
-    { icon:Icon.bolt, title:'Autonomous Workflows', d:'Let AI agents execute repetitive operational workflows end-to-end, from trigger to completion.'},
-    { icon:Icon.users, title:'Multi-Agent Teams', d:'Multiple specialized agents collaborate on complex, cross-functional tasks.'},
-    { icon:Icon.globe, title:'Kenya-Ready Operations', d:'Support workflows relevant to local businesses, including M-Pesa-based processes.'},
-    { icon:Icon.shield, title:'Human-in-the-Loop', d:'Sensitive actions can require explicit human authorization before execution.'},
-  ];
-  return (
-    <section className="py-24 px-5 bg-[var(--bg-soft)] border-y border-[var(--line)]">
-      <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {features.map((f,i)=>(
-          <div key={f.title} className="js-reveal card p-6 hover:-translate-y-1 hover:shadow-lg transition-all duration-300" style={{animationDelay:`${i*0.08}s`}}>
-            <div className="w-11 h-11 rounded-xl bg-[var(--bg-mist)] text-[var(--blue)] flex items-center justify-center mb-5">
-              <f.icon className="w-5 h-5"/>
+    { icon:Icon.bolt, title:'Au>
             </div>
             <div className="font-semibold text-sm mb-2">{f.title}</div>
             <div className="text-[13px] text-[var(--ink-soft)] leading-relaxed">{f.d}</div>
