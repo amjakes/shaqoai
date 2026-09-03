@@ -385,18 +385,7 @@ function ImpactMetrics(){
   const a = useCountUp(90, 1200, seen);
   const b = useCountUp(40, 1200, seen);
   const metrics = [
-    { val: Math.round(a)+'%+', label:'Potential repetitive-work automation'},
-    { val: Math.round(b)+'%+', label:'Potential operational overhead reduction'},
-    { val:'24/7', label:'AI workforce availability'},
-    { val:'M-Pesa', label:'Local payment workflow support'},
-  ];
-  return (
-    <section ref={ref} className="py-24 px-5 bg-[var(--bg-soft)] border-y border-[var(--line)]">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="js-reveal font-display text-3xl md:text-4xl font-bold tracking-tight">Built for Kenya. Ready for the world.</h2>
-        <p className="js-reveal text-[var(--ink-soft)] max-w-xl mx-auto mt-4" style={{animationDelay:'.05s'}}>ShaqoAI combines modern AI automation with the tools and workflows businesses already use across East Africa.</p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-14">
-          {metrics.map((m,i)=>(
+    { val: Math.round(a)+'%
             <div key={i} className="js-reveal card py-8 px-4" style={{animationDelay:`${0.1+i*0.07}s`}}>
               <div className="font-display num-tick text-3xl md:text-4xl font-bold grad-text">{m.val}</div>
               <div className="text-xs text-[var(--ink-soft)] mt-2 leading-snug">{m.label}</div>
