@@ -110,7 +110,20 @@ const DEPT_COLORS = {
   'Sales & Business Development':'#1E4FA0',
   'Marketing & Content':'#2E7BD6',
   'Operations & Projects':'#14B8A6',
- an', role:'AI Social Media Manager', dept:'Marketing & Content', skills:['Content Calendar','Copywriting','Campaigns','Analytics'], can:'Plans content, writes posts, builds content calendars, and analyzes social performance.' },
+  'People & Finance':'#F59E0B',
+  'Customer & Executive Support':'#0EA5E9',
+  'Education':'#7C3AED',
+  'Engineering & Design':'#DB2777',
+  'Legal & Compliance':'#475569',
+  'Healthcare Administration':'#059669',
+  'Commerce & Data':'#2563EB',
+  'Career & Lifestyle':'#D97706',
+};
+
+const AI_EMPLOYEES = [
+  { emoji:'💼', name:'Amara', role:'AI Business Development Manager', dept:'Sales & Business Development', skills:['Prospecting','Company Research','Decision-Maker ID','Outreach'], can:'Finds prospects, researches companies, identifies decision-makers, generates leads, and manages follow-ups.' },
+  { emoji:'📈', name:'Sarah', role:'AI Sales Representative', dept:'Sales & Business Development', skills:['Lead Qualification','Quotations','Follow-up','Closing'], can:'Qualifies leads, answers product questions, prepares quotations, and helps close sales.' },
+  { emoji:'📱', name:'Jordan', role:'AI Social Media Manager', dept:'Marketing & Content', skills:['Content Calendar','Copywriting','Campaigns','Analytics'], can:'Plans content, writes posts, builds content calendars, and analyzes social performance.' },
   { emoji:'✍️', name:'Maya', role:'AI Content Writer', dept:'Marketing & Content', skills:['Blogging','Newsletters','Ad Copy','Proposals'], can:'Writes blogs, articles, website content, newsletters, and marketing copy.' },
   { emoji:'🔎', name:'Elena', role:'AI Research Analyst', dept:'Marketing & Content', skills:['Market Research','Competitor Analysis','Reporting'], can:'Researches markets, competitors, and industries, and produces structured reports.' },
   { emoji:'📋', name:'Farah', role:'AI Tender & Proposal Specialist', dept:'Sales & Business Development', skills:['RFP Analysis','Compliance Matrix','Proposal Drafting'], can:'Finds tenders, analyzes RFPs, builds compliance matrices, and drafts proposals on deadline.' },
