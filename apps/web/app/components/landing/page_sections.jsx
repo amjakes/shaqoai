@@ -229,18 +229,7 @@ function DeploymentCenter(){
             <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.3"/>
           </linearGradient>
           <radialGradient id="heroGlow"><stop stopColor="#22d3ee" stopOpacity=".3"/><stop offset="1" stopColor="#22d3ee" stopOpacity="0"/></radialGradient>
-        </defs>
-        <circle cx="398" cy="304" r="220" fill="url(#heroGlow)"/>
-        {['M398 304 C390 190 404 136 420 92','M398 304 C490 202 590 138 670 108','M398 304 C520 280 638 300 690 350','M398 304 C480 386 580 438 670 476','M398 304 C325 420 242 480 142 500','M398 304 C266 302 150 272 90 230','M398 304 C278 210 200 190 130 168'].map((path,i)=>(
-          <path key={path} d={path} fill="none" stroke="url(#heroLineGrad)" strokeWidth="1.35" className="flow-line" style={{animationDelay:`${i*.5}s`}}/>
-        ))}
-        {[['398','304'],['420','92'],['670','108'],['690','350'],['670','476'],['142','500'],['90','230'],['130','168']].map(([cx,cy],i)=><circle key={i} cx={cx} cy={cy} r={i ? '3' : '5'} fill={i ? '#67e8f9' : '#fff'} />)}
-      </svg>
-      <div className="hero-core float">
-        <img src={LOGO_SRC} alt="ShaqoAI" className="hero-core__logo"/>
-      </div>
-      {agents.map((agent,i)=>{
-        const AgentIcon = agent.icon;
+        </defs>icon;
         return (
           <button key={agent.key} onMouseEnter={()=>setActiveAgent(agent.key)} onMouseLeave={()=>setActiveAgent(null)} onClick={()=>setActiveAgent(activeAgent===agent.key?null:agent.key)}
             style={{animationDelay:`${i*0.4}s`}}
