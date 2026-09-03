@@ -441,6 +441,15 @@ function AgentShowcase(){
                 {i<data.steps.length-1 && (
                   <div className="hidden md:flex items-center justify-center px-2 text-[var(--blue)]"><Icon.arrow className="w-4 h-4"/></div>
                 )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 /* ---------------- AI Employee Directory (25 agents) ---------------- */
 function AgentDirectory(){
