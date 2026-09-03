@@ -25,5 +25,11 @@ export function useCountUp(target, duration = 1400, trigger = true) {
     const step = (time) => {
       if (!start) start = time;
       const progress = Math.min(1, (time - start) / duration);
-      setValue(target
+      setValue(target * (1 - Math.pow(1 - progress, 3)));
+      if (progress < 1) frameRef.current = requestAnimationFrame(step);
+    };
+    frameRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameRef.current);
+  }, [target, trigger, duration]);
+  return value;
 }
