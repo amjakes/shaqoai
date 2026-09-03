@@ -498,7 +498,16 @@ function AgentDirectory(){
                 <div className="flex items-start gap-3 mb-4">
                   <span className="w-11 h-11 rounded-xl flex items-center justify-center text-xl shrink-0" style={{background:color+'1a'}}>{e.emoji}</span>
                   <div className="min-w-0">
-                    <div classNam
+                    <div className="font-semibold text-sm truncate">{e.name} <span className="text-[var(--ink-soft)] font-normal">— {e.role}</span></div>
+                    <div className="text-[10px] font-semibold uppercase tracking-wide mt-1" style={{color}}>{e.dept}</div>
+                  </div>
+                </div>
+                <p className="text-[13px] text-[var(--ink-soft)] leading-relaxed mb-4">{e.can}</p>
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {e.skills.map(s=>(
+                    <span key={s} className="text-[10px] font-medium px-2 py-1 rounded-md bg-[var(--bg-soft)] border border-[var(--line)] text-[var(--ink-soft)]">{s}</span>
+                  ))}
+                </div>
                 {e.disclaimer && (
                   <div className="text-[10.5px] text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-2.5 py-2 mb-4 leading-snug">{e.disclaimer}</div>
                 )}
