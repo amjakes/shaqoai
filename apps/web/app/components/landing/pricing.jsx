@@ -5,7 +5,20 @@ export function Pricing() {
   const [annual, setAnnual] = useState(true);
   const plans = [
     { name: 'Starter', 
-      description
+      description: 'For small teams beginning automation.', 
+      popular: false, 
+      features: [
+        '1 AI agent', 
+        'Core integrations', 
+        'Email support', 
+        'Basic audit log'] },
+    { name: 'Business', 
+      description: 'For businesses deploying multiple AI agents.', 
+      popular: true, 
+      features: [
+        'Up to 5 AI agents', 
+        'All integrations', 
+        'Priority support', 
         'Full audit trail', 
         'Human approval workflows'] },
     { name: 'Enterprise', 
