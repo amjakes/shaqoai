@@ -57,7 +57,14 @@ const Icon = {
   play: (p)=>(<svg viewBox="0 0 24 24" fill="currentColor" {...p}><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>),
   wallet: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><rect x="3" y="6" width="18" height="13" rx="2.5"/><path d="M3 10h18" /><circle cx="16" cy="14" r="1.3" fill="currentColor" stroke="none"/></svg>),
   chat: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><path d="M4 5.5h16v11H9l-5 4v-4H4v-11Z" strokeLinejoin="round"/></svg>),
-  calendar: (p)=>(<svg vAgent', status:'Active', work:'6 tasks queued', color:'#1E4FA0', icon:Icon.calendar, angle:-90 },
+  calendar: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17" strokeLinecap="round"/></svg>),
+  chart: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><path d="M4 20V10M12 20V4M20 20v-7" strokeLinecap="round"/></svg>),
+  lock: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><rect x="4.5" y="10.5" width="15" height="10" rx="2.4"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3" strokeLinecap="round"/></svg>),
+};
+
+/* ---------------- Data ---------------- */
+const LEGACY_AGENTS = [
+  { key:'exec', name:'Executive Agent', status:'Active', work:'6 tasks queued', color:'#1E4FA0', icon:Icon.calendar, angle:-90 },
   { key:'sales', name:'Sales Agent', status:'Working', work:'3 qualified leads', color:'#2E7BD6', icon:Icon.users, angle:-18 },
   { key:'finance', name:'Finance Agent', status:'Processing', work:'12 transactions', color:'#14B8A6', icon:Icon.wallet, angle:54 },
   { key:'support', name:'Support Agent', status:'Active', work:'7 conversations', color:'#F59E0B', icon:Icon.chat, angle:126 },
