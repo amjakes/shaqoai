@@ -67,7 +67,18 @@ const LEGACY_AGENTS = [
   { key:'exec', name:'Executive Agent', status:'Active', work:'6 tasks queued', color:'#1E4FA0', icon:Icon.calendar, angle:-90 },
   { key:'sales', name:'Sales Agent', status:'Working', work:'3 qualified leads', color:'#2E7BD6', icon:Icon.users, angle:-18 },
   { key:'finance', name:'Finance Agent', status:'Processing', work:'12 transactions', color:'#14B8A6', icon:Icon.wallet, angle:54 },
-  { key:'suppo Agent', what:'Payment queued for approval', color:'#14B8A6'},
+  { key:'support', name:'Support Agent', status:'Active', work:'7 conversations', color:'#F59E0B', icon:Icon.chat, angle:126 },
+  { key:'ops', name:'Operations Agent', status:'Idle', work:'0 blocked tasks', color:'#64748B', icon:Icon.chart, angle:198 },
+];
+
+
+const LEGACY_ACTIVITY_EVENTS = [
+  {t:'09:42', who:'Sales Agent', what:'Lead captured from WhatsApp', color:'#2E7BD6'},
+  {t:'09:43', who:'Support Agent', what:'Customer request classified', color:'#F59E0B'},
+  {t:'09:44', who:'Finance Agent', what:'M-Pesa payment matched to invoice', color:'#14B8A6'},
+  {t:'09:45', who:'Executive Agent', what:'Calendar updated for 3pm review', color:'#1E4FA0'},
+  {t:'09:47', who:'Sales Agent', what:'Follow-up scheduled in HubSpot', color:'#2E7BD6'},
+  {t:'09:49', who:'Finance Agent', what:'Payment queued for approval', color:'#14B8A6'},
 ];
 
 const LEGACY_AGENT_TABS = {
