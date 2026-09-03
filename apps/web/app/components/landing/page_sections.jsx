@@ -334,7 +334,17 @@ function ActivityFeed(){
   );
 }
 
-ame="js-reveal font-display text-[2.6rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight mt-5" style={{animationDelay:'.05s'}}>
+
+/* ---------------- Hero ---------------- */
+function Hero(){
+  return (
+    <section id="top" className="relative grain-bg pt-36 pb-24 md:pt-44 md:pb-32 px-5">
+      <div className="hero-layout max-w-7xl mx-auto grid lg:grid-cols-12 gap-10 xl:gap-14 items-center">
+        <div className="hero-copy">
+          <div className="js-reveal inline-flex items-center gap-2 text-[11px] font-semibold tracking-wider uppercase text-[var(--blue)] bg-[var(--bg-mist)] border border-blue-100 px-3 py-1.5 rounded-full">
+            <span className="dot pulse-dot" style={{background:'#1E4FA0'}}/> AI-Powered Operations
+          </div>
+          <h1 className="js-reveal font-display text-[2.6rem] leading-[1.05] sm:text-5xl md:text-6xl font-bold tracking-tight mt-5" style={{animationDelay:'.05s'}}>
             Deploy Your <span className="grad-text">Autonomous AI Workforce</span>
           </h1>
           <p className="js-reveal text-lg text-[var(--ink-soft)] mt-6 max-w-lg leading-relaxed" style={{animationDelay:'.1s'}}>
