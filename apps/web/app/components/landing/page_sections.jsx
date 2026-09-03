@@ -945,19 +945,6 @@ function LegacyFooter(){
     </footer>
   );
 }
-
-
-/* ---------------- App ---------------- */
-export function App(){
-  useReveal();
-  return (
-    <>
-      <Navigation/>
-      <Hero/>
-      <ImpactMetrics/>
-      <AgentShowcase/>
-      <AgentDirectory/>
-      <RoiCalculator/>
       <Integrations/>
       <FeatureGrid/>
       <HumanApproval/>
