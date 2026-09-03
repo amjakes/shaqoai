@@ -16,6 +16,10 @@ export function useReveal() {
   });
 }
 
+export function useCountUp(target, duration = 1400, trigger = true) {
+  const [value, setValue] = useState(0);
+  const frameRef = useRef(null);
+  useEffect(() => {
     if (!trigger) return undefined;
     let start;
     const step = (time) => {
