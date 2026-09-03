@@ -38,17 +38,7 @@ function AuthVisual() {
 }
 
 export function AuthPage() {
-  const initialMode = new URLSearchParams(window.location.search).get('mode') === 'signup' ? 'signup' : 'login';
-  const [mode, setMode] = useState(initialMode);
-  const [values, setValues] = useState({ name: '', email: '', password: '', confirm: '' });
-  const [errors, setErrors] = useState({});
-  const [showPassword, setShowPassword] = useState(false);
-  const [role, setRole] = useState('opportunities');
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState('');
-  const update = key => e => setValues(v => ({ ...v, [key]: e.target.value }));
-  const switchMode = next => { setMode(next); setErrors({}); setSuccess(''); window.history.replaceState({}, '', `/login?mode=${next}`); };
-  const submit = e => {
+  const initialMode =
     e.preventDefault();
     const next = {};
     if (mode === 'signup' && !values.name.trim()) next.name = 'Please enter your full name.';
