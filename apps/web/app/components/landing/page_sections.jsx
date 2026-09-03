@@ -725,7 +725,45 @@ function HumanApproval(){
 /* ---------------- Operations Dashboard ---------------- */
 function OperationsDashboard(){
   const [seen, setSeen] = useState(false);
-  const ref =
+  const ref = useRef(null);
+  useEffect(()=>{
+    const io = new IntersectionObserver(([e])=>{ if(e.isIntersecting) setSeen(true); }, {threshold:.3});
+    if(ref.current) io.observe(ref.current);
+    return ()=>io.disconnect();
+  },[]);
+  const t1 = useCountUp(1284, 1200, seen);
+  const t2 = useCountUp(843, 1200, seen);
+  const t3 = useCountUp(7, 900, seen);
+  const t4 = useCountUp(12, 900, seen);
+  const bars = [40,65,50,80,55,90,70];
+
+  return (
+    <section ref={ref} className="py-24 px-5">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="js-reveal font-display text-3xl md:text-4xl font-bold tracking-tight">Operations Command Center</h2>
+          <p className="js-reveal text-[var(--ink-soft)] mt-4" style={{animationDelay:'.05s'}}>Full visibility into every agent, workflow, and approval.</p>
+        </div>
+        <div className="card p-6 md:p-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-8">
+            {[
+              ["Today's Transactions", Math.round(t1).toLocaleString()],
+              ['AI Tasks Completed', Math.round(t2).toLocaleString()],
+              ['Active Agents', Math.round(t3)],
+              ['Pending Approvals', Math.round(t4)],
+            ].map(([label,val])=>(
+              <div key={label} className="p-4 rounded-xl bg-[var(--bg-soft)] border border-[var(--line)]">
+                <div className="font-display num-tick text-2xl font-bold">{val}</div>
+                <div className="text-[11px] text-[var(--ink-soft)] mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="md:col-span-2 p-5 rounded-xl border border-[var(--line)]">
+              <div className="text-xs font-semibold text-[var(--ink-soft)] mb-4">Workflow Completion — Last 7 Days</div>
+              <div className="flex items-end gap-2.5 h-32">
+                {bars.map((h,i)=>(
+                  <div key={i} className="flex-1 rounded-t-md bg-gradient-to-t from-[#1E4FA0] to-[#2E7BD6] transition-all duration-700" style={{height: seen ? `${h}%` : '0%'}}/>
                 ))}
               </div>
             </div>
