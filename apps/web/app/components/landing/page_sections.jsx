@@ -277,20 +277,6 @@ function WorkflowPanel(){
   ];
   const [active, setActive] = useState(0);
   useEffect(()=>{
-    const iv = setInterval(()=> setActive(p=>(p+1)%steps.length), 1800);
-    return ()=>clearInterval(iv);
-  },[]);
-  return (
-    <div className="hero-sidecard card p-5 w-64 shadow-lg">
-      <div className="hero-sidecard__title">Sales Agent Workflow</div>
-      <div className="flex flex-col">
-        {steps.map((s,i)=>(
-          <div key={i} className="flex gap-3">
-            <div className="flex flex-col items-center">
-              <span className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${i===active ? 'bg-[var(--blue)] scale-125 shadow-[0_0_0_5px_rgba(37,99,235,0.15)]' : i<active ? 'bg-[var(--green)]' : 'bg-slate-200'}`}/>
-              {i<steps.length-1 && <span className="w-px flex-1 bg-slate-200 my-0.5"/>}
-            </div>
-            <div className={`pb-4 transition-opacity duration-300 ${i===active ? 'opacity-100' : 'opacity-60'}`}>
               <div className="text-xs font-semibold">{s.t}</div>
               <div className="text-[11px] text-[var(--ink-soft)]">{s.d} · {s.time}</div>
             </div>
