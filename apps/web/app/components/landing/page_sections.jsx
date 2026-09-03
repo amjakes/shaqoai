@@ -786,12 +786,7 @@ function OperationsDashboard(){
 }
  
 
-/* ---------------- Security & Governance ---------------- */
-function Security(){
-  const cards = [
-    {icon:Icon.shield, title:'Human Approval', d:'Sensitive actions require authorization before they execute.'},
-    {icon:Icon.chart, title:'Audit Trails', d:'Every important AI action is recorded, end to end.'},
-    {icon:Icon.lock, title:'Role-Based Access', d:'Control exactly what agents and employees can access.'},
+/* ---------------- SecuritBased Access', d:'Control exactly what agents and employees can access.'},
     {icon:Icon.bolt, title:'Workflow Controls', d:'Define the rules that govern autonomous actions.'},
   ];
   const timeline = ['Agent started action','Action evaluated','Approval requested','Human approved','Action executed','Audit recorded'];
