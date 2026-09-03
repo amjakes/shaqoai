@@ -410,18 +410,7 @@ function ImpactMetrics(){
 }
 
 
-/* ---------------- Agent Showcase ---------------- */
-function AgentShowcase(){
-  const [tab, setTab] = useState('sales');
-  const data = AGENT_TABS[tab];
-  return (
-    <section id="solutions" className="py-24 px-5">
-      <div className="max-w-5xl mx-auto text-center">
-        <h2 className="js-reveal font-display text-3xl md:text-4xl font-bold tracking-tight">Meet Your AI Workforce</h2>
-        <p className="js-reveal text-[var(--ink-soft)] mt-4" style={{animationDelay:'.05s'}}>Specialized agents, each built for a specific part of your business.</p>
-
-        <div className="js-reveal inline-flex flex-wrap justify-center gap-1 mt-10 p-1 bg-[var(--bg-soft)] border border-[var(--line)] rounded-2xl" style={{animationDelay:'.1s'}}>
-          {Object.entries(AGENT_TABS).map(([k,v])=>(
+/* ---------------- Agent Showcase -----([k,v])=>(
             <button key={k} onClick={()=>setTab(k)}
               className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-200 ${tab===k ? 'bg-white shadow-sm text-[var(--blue)]' : 'text-[var(--ink-soft)] hover:text-[var(--ink)]'}`}>
               {v.label}
