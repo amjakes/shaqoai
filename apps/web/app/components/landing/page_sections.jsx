@@ -135,7 +135,17 @@ const AI_EMPLOYEES = [
   { emoji:'🗣️', name:'Layla', role:'AI Language Teacher', dept:'Education', skills:['Conversation Practice','Grammar','Pronunciation'], can:'Teaches languages through conversation, vocabulary, grammar, and pronunciation exercises.' },
   { emoji:'💻', name:'Marcus', role:'AI Software Developer', dept:'Engineering & Design', skills:['Coding','Debugging','APIs'], can:'Builds and debugs software, writes code, and helps design and develop applications.' },
   { emoji:'🎨', name:'Leo', role:'AI Graphic Designer', dept:'Engineering & Design', skills:['Brand Concepts','Social Visuals','Presentations'], can:'Creates brand concepts, marketing visuals, social-media designs, and presentations.' },
-  { emoji:'⚖️', name:'ersonal Productivity Coach', dept:'Career & Lifestyle', skills:['Goal Setting','Prioritization','Accountability'], can:'Helps set goals, prioritize tasks, build routines, and track progress.' },
+  { emoji:'⚖️', name:'Victor', role:'AI Legal Assistant', dept:'Legal & Compliance', skills:['Contract Review','Clause Identification','Legal Research'], can:'Researches laws, summarizes contracts, and organizes legal documents.', disclaimer:'Not a substitute for a licensed lawyer.' },
+  { emoji:'🏥', name:'Naima', role:'AI Medical Administrative Assistant', dept:'Healthcare Administration', skills:['Appointments','Admin Documents','General Info'], can:'Organizes appointments, summarizes non-diagnostic information, and prepares administrative documents.', disclaimer:'Directs medical decisions to qualified professionals.' },
+  { emoji:'🛒', name:'Priya', role:'AI E-commerce Manager', dept:'Commerce & Data', skills:['Listings','Inventory','Promotions'], can:'Manages product listings, customer questions, inventory info, and sales analysis.' },
+  { emoji:'🧑‍💼', name:'Daniel', role:'AI Project Manager', dept:'Operations & Projects', skills:['Task Breakdown','Deadlines','Progress Reports'], can:'Breaks projects into tasks, monitors deadlines, and flags potential delays.' },
+  { emoji:'📊', name:'Chen', role:'AI Data Analyst', dept:'Commerce & Data', skills:['Spreadsheets','Trend Analysis','Insights'], can:'Analyzes spreadsheets and datasets, identifies trends, and explains insights in plain language.' },
+  { emoji:'📢', name:'Aisha', role:'AI Marketing Manager', dept:'Marketing & Content', skills:['Strategy','Personas','Budgets'], can:'Develops marketing strategies, customer personas, campaigns, and performance reports.' },
+  { emoji:'🧑‍💻', name:'Ryan', role:'AI IT Support Specialist', dept:'Engineering & Design', skills:['Troubleshooting','Documentation','Software & Hardware'], can:'Diagnoses common technical problems and guides users through fixes.' },
+  { emoji:'📄', name:'Fatima', role:'AI Resume & Career Coach', dept:'Career & Lifestyle', skills:['CV Writing','Cover Letters','Interview Prep'], can:'Improves CVs, writes cover letters, and prepares candidates for interviews.' },
+  { emoji:'🌍', name:'Noah', role:'AI Travel Planner', dept:'Career & Lifestyle', skills:['Itineraries','Comparisons','Scheduling'], can:'Researches destinations, builds itineraries, and compares travel options.' },
+  { emoji:'🏢', name:'Halima', role:'AI Operations Manager', dept:'Operations & Projects', skills:['SOPs','Workflows','Efficiency'], can:'Creates SOPs, organizes workflows, and identifies ways to improve efficiency.' },
+  { emoji:'🧠', name:'Sam', role:'AI Personal Productivity Coach', dept:'Career & Lifestyle', skills:['Goal Setting','Prioritization','Accountability'], can:'Helps set goals, prioritize tasks, build routines, and track progress.' },
 ];
 
 
