@@ -172,18 +172,7 @@ function LegacyNav(){
         </nav>
         <div className="header-actions hidden lg:flex items-center shrink-0 gap-3">
           <span className="header-status hidden xl:inline-flex items-center gap-2 whitespace-nowrap">
-            <span className="dot pulse-dot"/> Executive Agent Active
-          </span>
-          <a href="/login?mode=login" className="text-sm font-medium px-4 py-2 text-[var(--ink-soft)] hover:text-[var(--ink)] transition-colors">Sign In</a>
-          <a href="/login?mode=signup" className="btn-primary text-sm font-semibold px-4 py-2.5 rounded-xl">Start Free Trial</a>
-        </div>
-        <button className="md:hidden p-2 -mr-2" onClick={()=>setOpen(true)} aria-label="Open menu"><Icon.menu className="w-6 h-6"/></button>
-      </div>
-    </header>
-    <div className={`fixed inset-0 z-[60] md:hidden transition-all duration-300 ${open ? 'pointer-events-auto' : 'pointer-events-none'}`}>
-      <div className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${open?'opacity-100':'opacity-0'}`} onClick={()=>setOpen(false)}/>
-      <div className={`mobile-drawer absolute top-0 right-0 h-full w-[78%] max-w-xs bg-white shadow-2xl transition-transform duration-300 ${open? 'translate-x-0':'translate-x-full'} p-6 flex flex-col`}>
-        <div className="flex justify-between items-center mb-8">
+            <span classNambetween items-center mb-8">
           <span className="flex items-center gap-2 font-display font-bold"><img src={LOGO_SRC} alt="ShaqoAI" className="w-7 h-7 rounded-lg object-cover"/>ShaqoAI</span>
           <button onClick={()=>setOpen(false)}><Icon.close className="w-6 h-6"/></button>
         </div>
