@@ -537,7 +537,20 @@ function RoiCalculator(){
   const [employees, setEmployees] = useState(25);
   const [hours, setHours] = useState(15);
   const [rate, setRate] = useState(700);
--reveal font-display text-3xl md:text-4xl font-bold tracking-tight">Calculate Your Automation Potential</h2>
+
+  const weeklySavedHours = employees * hours * 0.6;
+  const monthlyValue = weeklySavedHours * 4.33 * rate;
+  const annualValue = monthlyValue * 12;
+
+  const animAnnual = useCountUp(annualValue, 900, true);
+
+  const fmt = (n)=> 'KES ' + Math.round(n).toLocaleString('en-KE');
+
+  return (
+    <section id="product" className="py-24 px-5 bg-[var(--bg-soft)] border-y border-[var(--line)]">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="js-reveal font-display text-3xl md:text-4xl font-bold tracking-tight">Calculate Your Automation Potential</h2>
           <p className="js-reveal text-[var(--ink-soft)] mt-4" style={{animationDelay:'.05s'}}>Adjust the inputs to see illustrative productivity value for your business.</p>
         </div>
         <div className="card p-6 md:p-10 grid md:grid-cols-2 gap-10">
