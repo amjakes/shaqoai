@@ -3,7 +3,16 @@
 @keyframes fadeUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}.reveal{opacity:0;animation:fadeUp .7s cubic-bezier(.2,.7,.2,1) forwards;}
 @keyframes dashMove{to{stroke-dashoffset:-200;}}.flow-line{stroke-dasharray:4 6;animation:dashMove 6s linear infinite;}
 @keyframes particleMove{0%{offset-distance:0%;opacity:0;}8%{opacity:1;}92%{opacity:1;}100%{offset-distance:100%;opacity:0;}}
-.noscrobg-mist) !important;}
+.noscroll-x{max-width:100vw;overflow-x:hidden;background-image:radial-gradient(circle at 70% 20%,rgba(30,64,175,.1),transparent 22%),radial-gradient(circle at 25% 55%,rgba(8,145,178,.08),transparent 25%);}
+section{position:relative;isolation:isolate;}
+section:nth-of-type(even)::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(115deg,rgba(15,23,42,.25),transparent 45%,rgba(30,41,59,.28));border-block:1px solid rgba(148,163,184,.06);pointer-events:none;}
+section .card{transition:transform .28s cubic-bezier(.2,.75,.25,1),box-shadow .28s ease,border-color .28s ease;}
+section .card:hover{transform:translateY(-5px);border-color:rgba(103,232,249,.38) !important;box-shadow:0 28px 68px rgba(0,0,0,.42),0 0 30px rgba(34,211,238,.08),inset 0 1px 0 rgba(255,255,255,.08);}
+select{appearance:none;background-color:rgba(15,23,42,.85) !important;color:var(--ink) !important;border-color:rgba(148,163,184,.25) !important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
+input[type='range']{accent-color:var(--cyan);filter:saturate(1.3);}
+body .bg-white{background-color:var(--surface) !important;}
+body .bg-slate-200{background-color:#2a3858 !important;}
+body .bg-slate-50{background-color:var(--bg-mist) !important;}
 body .border-blue-100,body .border-amber-100,body .border-green-200{border-color:var(--line) !important;}
 body .text-slate-200{color:#dce8ff !important;}body .text-slate-300{color:#c2d1eb !important;}body .text-slate-400,body .text-slate-500{color:var(--ink-soft) !important;}
 .site-header>div{box-shadow:0 14px 38px rgba(0,0,0,.16);}.site-header a:not(.btn-primary){transition:color .2s ease,opacity .2s ease;}.site-header a:not(.btn-primary):hover{color:var(--cyan) !important;}
