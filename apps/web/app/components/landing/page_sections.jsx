@@ -478,7 +478,19 @@ function AgentDirectory(){
           <p className="js-reveal text-[var(--ink-soft)] max-w-2xl mx-auto mt-4" style={{animationDelay:'.1s'}}>
             Every ShaqoAI employee has a name, a role, and a set of skills — not just a generic chatbot. Hire the ones your business needs and assemble your own AI workforce.
           </p>
-        </div>=>{
+        </div>
+
+        <div className="js-reveal flex flex-wrap justify-center gap-2 mt-9 mb-10" style={{animationDelay:'.15s'}}>
+          {depts.map(d=>(
+            <button key={d} onClick={()=>setFilter(d)}
+              className={`px-3.5 py-2 text-xs font-semibold rounded-full border transition-all duration-200 ${filter===d ? 'bg-[var(--ink)] text-white border-[var(--ink)]' : 'bg-white text-[var(--ink-soft)] border-[var(--line)] hover:border-slate-300'}`}>
+              {d}
+            </button>
+          ))}
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {visible.map((e,i)=>{
             const color = DEPT_COLORS[e.dept] || 'var(--blue)';
             const isHired = hired.has(e.name);
             return (
