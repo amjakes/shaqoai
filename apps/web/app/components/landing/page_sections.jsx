@@ -245,7 +245,17 @@ function DeploymentCenter(){
           <button key={agent.key} onMouseEnter={()=>setActiveAgent(agent.key)} onMouseLeave={()=>setActiveAgent(null)} onClick={()=>setActiveAgent(activeAgent===agent.key?null:agent.key)}
             style={{animationDelay:`${i*0.4}s`}}
             className={`hero-agent ${agent.position} float-slow ${activeAgent===agent.key ? 'hero-agent--active' : ''}`}>
-            <span clas
+            <span className="hero-agent__icon" style={{background:agent.color+'1f', color:agent.color}}><AgentIcon/></span>
+            <span className="hero-agent__copy"><b>{agent.label}</b><small>{agent.detail}</small></span>
+            {agent.key==='finance' && <span className="hero-agent__live"/>}
+          </button>
+        );
+      })}
+      <div className="hero-workflow">
+        <div className="hero-panel__title">Sales Agent Workflow</div>
+        {[['Lead Capture','WhatsApp · 09:42'],['Qualification','AI Analysis · 09:43'],['CRM Sync','HubSpot · 09:44']].map(([title,detail],i)=>(
+          <div className="hero-step" key={title}><span className={i===1?'hero-step__dot hero-step__dot--active':'hero-step__dot'}/><div><b>{title}</b><small>{detail}</small></div></div>
+        ))}
       </div>
       <div className="hero-activity">
         <div className="hero-panel__title">Autonomous Activity</div>
