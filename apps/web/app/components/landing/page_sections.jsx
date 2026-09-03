@@ -357,7 +357,16 @@ function Hero(){
             <a href="#how-it-works" className="btn-ghost font-semibold px-6 py-3.5 rounded-xl inline-flex items-center gap-2">
               <Icon.play className="w-4 h-4"/> Watch How It Works
             </a>
-          </denter/>
+          </div>
+          <div className="js-reveal flex items-center gap-6 mt-10 text-xs text-[var(--ink-soft)]" style={{animationDelay:'.2s'}}>
+            <span className="flex items-center gap-1.5"><Icon.check className="w-3.5 h-3.5 text-[var(--green)]"/> No credit card required</span>
+            <span className="flex items-center gap-1.5"><Icon.check className="w-3.5 h-3.5 text-[var(--green)]"/> Human approval built in</span>
+          </div>
+        </div>
+
+        <div className="hero-visual">
+          <div className="hero-visual__label">Deployment Center</div>
+          <DeploymentCenter/>
         </div>
       </div>
     </section>
