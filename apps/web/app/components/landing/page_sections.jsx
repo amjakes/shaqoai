@@ -373,14 +373,6 @@ function Hero(){
   );
 }
 
-/* ---------------- Impact Metrics ---------------- */
-function ImpactMetrics(){
-  const [seen, setSeen] = useState(false);
-  const ref = useRef(null);
-  useEffect(()=>{
-    const io = new IntersectionObserver(([e])=>{ if(e.isIntersecting) setSeen(true); }, {threshold:.4});
-    if(ref.current) io.observe(ref.current);
-    return ()=>io.disconnect();
   },[]);
   const a = useCountUp(90, 1200, seen);
   const b = useCountUp(40, 1200, seen);
