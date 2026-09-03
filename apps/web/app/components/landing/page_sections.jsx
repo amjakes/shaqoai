@@ -429,7 +429,11 @@ function AgentShowcase(){
           ))}
         </div>
 
-        <div className="cay={s}>
+        <div className="card mt-8 p-8 md:p-12 text-left">
+          <div className="text-xs font-semibold uppercase tracking-wide text-[var(--ink-soft)] mb-6">{data.integrations}</div>
+          <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-0">
+            {data.steps.map((s,i)=>(
+              <React.Fragment key={s}>
                 <div className="flex-1 card px-4 py-4 hover:glow-active transition-all duration-200">
                   <div className="text-[11px] text-[var(--ink-soft)] mb-1">Step {i+1}</div>
                   <div className="text-sm font-semibold">{s}</div>
