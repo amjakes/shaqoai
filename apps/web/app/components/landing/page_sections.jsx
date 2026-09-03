@@ -313,7 +313,18 @@ function ActivityFeed(){
         idx.current++;
         return next.slice(-4);
       });
-    }, 2200);="text-[11px] text-[var(--ink-soft)]">{e.t} · <span className="font-semibold text-[var(--ink)]">{e.who}</span></div>
+    }, 2200);
+    return ()=>clearInterval(iv);
+  },[]);
+  return (
+    <div className="hero-sidecard card p-5 w-72 shadow-lg">
+      <div className="hero-sidecard__title">Autonomous Activity</div>
+      <div className="flex flex-col gap-3 h-[168px] overflow-hidden scrollbar-thin">
+        {items.map((e,i)=>(
+          <div key={e.who+i+e.t} className="flex items-start gap-2.5" style={{animation:'fadeUp .5s ease both'}}>
+            <span className="dot mt-1.5" style={{background:e.color}}/>
+            <div>
+              <div className="text-[11px] text-[var(--ink-soft)]">{e.t} · <span className="font-semibold text-[var(--ink)]">{e.who}</span></div>
               <div className="text-xs text-[var(--ink)]">{e.what}</div>
             </div>
           </div>
