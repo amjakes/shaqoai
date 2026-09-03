@@ -19,16 +19,7 @@ function legacyUseReveal(){
         }
       });
     }, {threshold:0.15});
-    els.forEach(el=>io.observe(el));
-    return ()=>io.disconnect();
-  });
-}
-
-function legacyUseCountUp(target, duration=1400, trigger=true){
-  const [val, setVal] = useState(0);
-  const ref = useRef(null);
-  useEffect(()=>{
-    if(!trigger) return;
+    els.forEach(el=>i
     let raf, start;
     const step = (t)=>{
       if(!start) start = t;
