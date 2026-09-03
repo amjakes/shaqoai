@@ -38,7 +38,17 @@ function AuthVisual() {
 }
 
 export function AuthPage() {
-  const initialMode =
+  const initialMode = new URLSearchParams(window.location.search).get('mode') === 'signup' ? 'signup' : 'login';
+  const [mode, setMode] = useState(initialMode);
+  const [values, setValues] = useState({ name: '', email: '', password: '', confirm: '' });
+  const [errors, setErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [role, setRole] = useState('opportunities');
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState('');
+  const update = key => e => setValues(v => ({ ...v, [key]: e.target.value }));
+  const switchMode = next => { setMode(next); setErrors({}); setSuccess(''); window.history.replaceState({}, '', `/login?mode=${next}`); };
+  const submit = e => {
     e.preventDefault();
     const next = {};
     if (mode === 'signup' && !values.name.trim()) next.name = 'Please enter your full name.';
@@ -60,6 +70,15 @@ export function AuthPage() {
         {success ? <div className="auth-success" role="status"><b>✓</b> {success}<span>Frontend demonstration — no account was created.</span></div> : <form onSubmit={submit} noValidate>
           {signup && <FormInput label="Full name" value={values.name} onChange={update('name')} error={errors.name}/>} 
           <FormInput label="Email address" type="email" value={values.email} onChange={update('email')} error={errors.email}/>
-          <FormInput label="Pa
+          <FormInput label="Password" type={showPassword ? 'text' : 'password'} value={values.password} onChange={update('password')} error={errors.password}><button type="button" className="auth-password-toggle" onClick={() => setShowPassword(!showPassword)} aria-label={showPassword ? 'Hide password' : 'Show password'}>{showPassword ? 'Hide' : 'Show'}</button></FormInput>
+          {signup && <FormInput label="Confirm password" type={showPassword ? 'text' : 'password'} value={values.confirm} onChange={update('confirm')} error={errors.confirm}/>} 
+          {signup && <fieldset className="auth-role"><legend>What are you here for?</legend><div><button type="button" onClick={() => setRole('opportunities')} className={role === 'opportunities' ? 'is-selected' : ''}><span>◉</span><b>I'm looking for opportunities</b><small>Find jobs, showcase my skills, and grow my career.</small></button><button type="button" onClick={() => setRole('hiring')} className={role === 'hiring' ? 'is-selected' : ''}><span>▣</span><b>I'm hiring talent</b><small>Discover skilled professionals and build your team.</small></button></div></fieldset>}
+          {!signup && <div className="auth-options"><label><input type="checkbox"/> Remember me</label><button type="button">Forgot password?</button></div>}
+          <button className="auth-submit" disabled={loading}>{loading ? (signup ? 'Creating account…' : 'Signing in…') : (signup ? 'Create Account' : 'Sign In')}</button>
+        </form>}
+        {!success && <><div className="auth-divider"><span>or continue with</span></div><SocialButtons /></>}
+        <p className="auth-switch">{signup ? 'Already have an account?' : "Don't have an account?"} <button onClick={() => switchMode(signup ? 'login' : 'signup')}>{signup ? 'Sign in' : 'Sign up'}</button></p>
+      </div>
+    </section>
   </main>;
 }
