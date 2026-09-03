@@ -6,13 +6,7 @@ body{
   background:var(--bg);
   color:var(--ink);
   overflow-x:hidden;
-  min-height:100vh;
-  text-rendering:optimizeLegibility;
-}
-.font-display{ font-family:'Space Grotesk',system-ui,sans-serif; }
-::selection{ background:rgba(34,211,238,.3); color:#fff; }
-a,button,input,select{ -webkit-tap-highlight-color:transparent; }
-button,a{ outline-color:var(--cyan); }
+  min-heig:var(--cyan); }
 button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;}
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
