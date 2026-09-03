@@ -841,7 +841,23 @@ function LegacyHowItWorks(){
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {steps.map((s,i)=>(
             <div key={s.n} className="js-reveal relative" style={{animationDelay:`${i*0.08}s`}}>
-              <div class
+              <div className="font-display text-4xl font-bold text-slate-200">{s.n}</div>
+              <div className="font-semibold mt-2">{s.t}</div>
+              <div className="text-sm text-[var(--ink-soft)] mt-1.5 leading-relaxed">{s.d}</div>
+              {i<steps.length-1 && <div className="hidden lg:block absolute top-4 -right-3 w-6 h-px bg-slate-200"/>}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+/* ---------------- Pricing ---------------- */
+function LegacyPricing(){
+  const [annual, setAnnual] = useState(true);
+  const plans = [
     { name:'Starter', desc:'For small teams beginning automation.', monthly:0, popular:false, features:['1 AI agent','Core integrations','Email support','Basic audit log']},
     { name:'Business', desc:'For businesses deploying multiple AI agents.', monthly:0, popular:true, features:['Up to 5 AI agents','All integrations','Priority support','Full audit trail','Human approval workflows']},
     { name:'Enterprise', desc:'For organizations requiring advanced governance.', monthly:null, popular:false, features:['Unlimited agents','Custom integrations','Dedicated support','Advanced governance','SLA & onboarding']},
