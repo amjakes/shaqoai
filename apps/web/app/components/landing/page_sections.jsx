@@ -98,13 +98,7 @@ const LEGACY_AGENT_TABS = {
     integrations:'Daraja API → ShaqoAI → Accounting',
   },
   executive: {
-    label:'Executive Agent',
-    steps:['Email Received','Prioritization','Task Creation','Calendar Update','Team Follow-up'],
-    integrations:'Gmail / Outlook → ShaqoAI → Calendar',
-  }
-};
-
-const LEGACY_INTEGRATIONS = ['M-Pesa','WhatsApp','Gmail','Google Calendar','Microsoft Outlook','HubSpot','Shopify','PostgreSQL'];
+    label:'Executive Age'M-Pesa','WhatsApp','Gmail','Google Calendar','Microsoft Outlook','HubSpot','Shopify','PostgreSQL'];
 
 const DEPT_COLORS = {
   'Sales & Business Development':'#1E4FA0',
