@@ -151,7 +151,19 @@ const AI_EMPLOYEES = [
 
 /* ---------------- Nav ---------------- */
 function LegacyNav(){
-  const [scrolled, setScms-center gap-2.5 font-display font-bold text-lg tracking-tight">
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  useEffect(()=>{
+    const onScroll = ()=> setScrolled(window.scrollY > 12);
+    window.addEventListener('scroll', onScroll);
+    return ()=>window.removeEventListener('scroll', onScroll);
+  },[]);
+  const links = ['Product','AI Workforce','Solutions','Integrations','Pricing'];
+  return (
+    <>
+    <header className={`site-header fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'}`}>
+      <div className={`mx-auto max-w-7xl px-5 flex items-center justify-between rounded-2xl transition-all duration-300 ${scrolled ? 'glass border border-[var(--line)] shadow-sm py-2.5 px-6' : 'px-5'}`}>
+        <a href="#top" className="flex items-center gap-2.5 font-display font-bold text-lg tracking-tight">
           <img src={LOGO_SRC} alt="ShaqoAI" className="w-8 h-8 rounded-lg object-cover shadow-sm"/>
           ShaqoAI
         </a>
