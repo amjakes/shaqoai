@@ -522,19 +522,7 @@ function AgentDirectory(){
             );
           })}
         </div>
-
-        {hired.size>0 && (
-          <div className="js-reveal mt-10 text-center text-sm text-[var(--ink-soft)]">
-            You've hired <span className="font-semibold text-[var(--ink)]">{hired.size}</span> AI employee{hired.size>1?'s':''} — start building your workflows in the dashboard once you're live.
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
-function RoiCalculator(){
-  const [industry, setIndustry] = useState('Professional Services');
-  const [employees, setEmployees] = useState(25);
+mployees] = useState(25);
   const [hours, setHours] = useState(15);
   const [rate, setRate] = useState(700);
 
