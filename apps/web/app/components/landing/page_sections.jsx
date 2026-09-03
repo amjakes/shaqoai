@@ -259,7 +259,20 @@ function DeploymentCenter(){
       </div>
       <div className="hero-activity">
         <div className="hero-panel__title">Autonomous Activity</div>
-        {activipot', time:'09:44'},
+        {activity.map(([time,agent,event,color])=><div className="hero-activity__item" key={time+agent}><i style={{background:color}}/><div><small>{time} · {agent}</small><b>{event}</b></div></div>)}
+      </div>
+      <div className="hero-hub"><span className="hero-hub__label">Agent Hub</span><span className="hero-hub__core"/><span className="hero-hub__node hero-hub__node--a">Security Agent</span><span className="hero-hub__node hero-hub__node--b">QA Agent</span><span className="hero-hub__node hero-hub__node--c">Market Analyst</span></div>
+    </div>
+  );
+}
+
+
+/* ---------------- Floating Workflow Panel ---------------- */
+function WorkflowPanel(){
+  const steps = [
+    {t:'Lead Capture', d:'WhatsApp', time:'09:42'},
+    {t:'Qualification', d:'AI Analysis', time:'09:43'},
+    {t:'CRM Sync', d:'HubSpot', time:'09:44'},
     {t:'Follow-up', d:'Scheduled', time:'09:46'},
   ];
   const [active, setActive] = useState(0);
