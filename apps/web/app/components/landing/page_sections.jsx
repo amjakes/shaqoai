@@ -399,17 +399,7 @@ function ImpactMetrics(){
           {metrics.map((m,i)=>(
             <div key={i} className="js-reveal card py-8 px-4" style={{animationDelay:`${0.1+i*0.07}s`}}>
               <div className="font-display num-tick text-3xl md:text-4xl font-bold grad-text">{m.val}</div>
-              <div className="text-xs text-[var(--ink-soft)] mt-2 leading-snug">{m.label}</div>
-            </div>
-          ))}
-        </div>
-        <div className="text-[11px] text-[var(--ink-soft)] mt-6 uppercase tracking-wide">Illustrative automation potential — not independently verified customer results</div>
-      </div>
-    </section>
-  );
-}
-
-
+       
 /* ---------------- Agent Showcase ---------------- */
 function AgentShowcase(){
   const [tab, setTab] = useState('sales');
