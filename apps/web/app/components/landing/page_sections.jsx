@@ -902,15 +902,6 @@ function LegacyFinalCTA(){
           <path className="flow-line" d="M0,80 C250,220 500,20 800,200" style={{animationDelay:'1s'}}/>
         </g>
       </svg>
-      <div className="relative max-w-3xl mx-auto text-center text-white">
-        <h2 className="js-reveal font-display text-3xl md:text-5xl font-bold tracking-tight leading-tight">Your Business Deserves a Workforce That Never Stops.</h2>
-        <p className="js-reveal text-slate-300 mt-6 max-w-xl mx-auto" style={{animationDelay:'.05s'}}>Automate repetitive work, coordinate intelligent agents, and keep your team focused on the work that matters.</p>
-        <div className="js-reveal flex flex-wrap justify-center gap-4 mt-9" style={{animationDelay:'.1s'}}>
-          <a href="/login?mode=signup" className="btn-primary font-semibold px-6 py-3.5 rounded-xl">Build Your AI Workforce →</a>
-          <a href="#" className="font-semibold px-6 py-3.5 rounded-xl border border-white/25 text-white hover:bg-white/10 transition-colors">Talk to ShaqoAI →</a>
-        </div>
-      </div>
-    </section>
   );
 }
 
