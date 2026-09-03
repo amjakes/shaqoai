@@ -192,20 +192,7 @@ function LegacyNav(){
         </div>
         <div className="mt-auto flex flex-col gap-3">
           <a href="/login?mode=login" className="btn-ghost text-center py-2.5 rounded-xl font-medium">Sign In</a>
-          <a href="/login?mode=signup" onClick={()=>setOpen(false)} className="btn-primary text-center py-2.5 rounded-xl font-semibold">Start Free Trial</a>
-        </div>
-      </div>
-    </div>
-    </>
-  );
-}
-
-
-/* ---------------- Deployment Center (agent network) ---------------- */
-function DeploymentCenter(){
-  const [activeAgent, setActiveAgent] = useState(null);
-  const agents = [
-    {key:'exec', label:'Executive Agent', detail:'Orchestrating decisions', icon:Icon.users, position:'hero-agent--executive', color:'#4ade80'},
+          <a href="/gent', detail:'Orchestrating decisions', icon:Icon.users, position:'hero-agent--executive', color:'#4ade80'},
     {key:'manager', label:'AI Manager Agent', detail:'Overseeing 5 workflows', icon:Icon.chart, position:'hero-agent--manager', color:'#a78bfa'},
     {key:'data', label:'Data Scientist Agent', detail:'Processing new datasets', icon:Icon.chart, position:'hero-agent--data', color:'#22d3ee'},
     {key:'support', label:'Support Agent', detail:'17 tickets · 7 conversations', icon:Icon.chat, position:'hero-agent--support', color:'#38bdf8'},
