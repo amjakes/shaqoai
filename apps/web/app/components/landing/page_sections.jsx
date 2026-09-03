@@ -39,7 +39,16 @@ function legacyUseCountUp(target, duration=1400, trigger=true){
     };
     raf = requestAnimationFrame(step);
     return ()=>cancelAnimationFrame(raf);
-  }, [target, trigger 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><path d="M12 3l7 3v6c0 4.6-3 8.2-7 9-4-.8-7-4.4-7-9V6l7-3Z" strokeLinejoin="round"/><path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/></svg>),
+  }, [target, trigger, duration]);
+  return val;
+}
+
+
+/* ---------------- Icons (inline SVG, no deps) ---------------- */
+const Icon = {
+  bolt: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z" strokeLinejoin="round" strokeLinecap="round"/></svg>),
+  users: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c1-3.6 3.6-5.5 6.5-5.5s5.5 1.9 6.5 5.5" strokeLinecap="round"/><circle cx="17.5" cy="9" r="2.6"/><path d="M15.8 14.8c2.6.2 4.6 2 5.4 5.2" strokeLinecap="round"/></svg>),
+  shield: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><path d="M12 3l7 3v6c0 4.6-3 8.2-7 9-4-.8-7-4.4-7-9V6l7-3Z" strokeLinejoin="round"/><path d="m9 12 2 2 4-4" strokeLinecap="round" strokeLinejoin="round"/></svg>),
   globe: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" {...p}><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.7 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.7-4-9s1.3-6.4 4-9Z"/></svg>),
   check: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" {...p}><path d="m4 12 5.5 5.5L20 7" strokeLinecap="round" strokeLinejoin="round"/></svg>),
   arrow: (p)=>(<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" {...p}><path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round"/></svg>),
