@@ -879,18 +879,7 @@ function LegacyPricing(){
               {p.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[var(--blue)] text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wide">MOST POPULAR</span>}
               <div className="font-display font-bold text-lg">{p.name}</div>
               <div className="text-sm text-[var(--ink-soft)] mt-1.5 mb-6">{p.desc}</div>
-              <ul className="flex flex-col gap-2.5 mb-8 flex-1">
-                {p.features.map(f=>(<li key={f} className="text-sm flex items-center gap-2"><Icon.check className="w-3.5 h-3.5 text-[var(--green)] shrink-0"/>{f}</li>))}
-              </ul>
-              <a href="/login?mode=signup" className={`text-center font-semibold py-3 rounded-xl text-sm ${p.popular ? 'btn-primary' : 'btn-ghost'}`}>{p.name==='Enterprise' ? 'Contact Sales' : 'Start Free Trial'}</a>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
+              <ul cla
 
 /* ---------------- Final CTA ---------------- */
 function LegacyFinalCTA(){
