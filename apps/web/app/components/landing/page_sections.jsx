@@ -81,15 +81,7 @@ const LEGACY_ACTIVITY_EVENTS = [
   {t:'09:49', who:'Finance Agent', what:'Payment queued for approval', color:'#14B8A6'},
 ];
 
-const LEGACY_AGENT_TABS = {
-  sales: {
-    label:'Sales Agent',
-    steps:['Lead Capture — WhatsApp','Qualification — AI Analysis','CRM Sync — HubSpot','Follow-up — Scheduled'],
-    integrations:'WhatsApp → ShaqoAI → HubSpot',
-  },
-  support: {
-    label:'Support Agent',
-    steps:['Customer Message','Intent Detection','Knowledge Search','Response Sent','Escalation if Needed'],
+const LEGACY_AGENT_TABS = {t Detection','Knowledge Search','Response Sent','Escalation if Needed'],
     integrations:'WhatsApp / Email → ShaqoAI → Helpdesk',
   },
   finance: {
