@@ -209,15 +209,7 @@ function DeploymentCenter(){
     {key:'manager', label:'AI Manager Agent', detail:'Overseeing 5 workflows', icon:Icon.chart, position:'hero-agent--manager', color:'#a78bfa'},
     {key:'data', label:'Data Scientist Agent', detail:'Processing new datasets', icon:Icon.chart, position:'hero-agent--data', color:'#22d3ee'},
     {key:'support', label:'Support Agent', detail:'17 tickets · 7 conversations', icon:Icon.chat, position:'hero-agent--support', color:'#38bdf8'},
-    {key:'ops', label:'Operations Agent', detail:'0 blocked tasks', icon:Icon.bolt, position:'hero-agent--operations', color:'#2dd4bf'},
-    {key:'finance', label:'Finance Agent', detail:'Processing · 12 transactions', icon:Icon.wallet, position:'hero-agent--finance', color:'#fbbf24'},
-  ];
-  const activity = [
-    ['05:44','Finance Agent','M-Pesa payment matched to invoice','#2dd4bf'],
-    ['09:45','Executive Agent','Calendar updated for 3pm review','#a78bfa'],
-    ['09:47','Sales Agent','Follow-up scheduled in HubSpot','#38bdf8'],
-    ['08:49','Finance Agent','Payment queued for approval','#fbbf24'],
-  ];
+    {key:'ops', label:'Operations A
   return (
     <div className="hero-network select-none">
       <div className="hero-network__mesh" aria-hidden="true"/>
