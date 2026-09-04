@@ -149,3 +149,9 @@ To deactivate the virtual environment when finished:
 ```bash
 deactivate
 ```
+
+### Prerequisites
+
+- Python 3.10 or newer
+- Git
+- An OpenAI API key
