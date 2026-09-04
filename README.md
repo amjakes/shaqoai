@@ -67,3 +67,85 @@ Payment Verification
 Human Approval
        ↓
 Transaction Execution
+
+## Installation
+
+Follow the steps below to run ShaqoAI locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+* **Python 3.10+**
+* **Git**
+* **Node.js 18+** *(if running the frontend)*
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/amjakes/shaqoai.git
+cd shaqoai
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+Activate the virtual environment:
+
+**Windows:**
+
+```bash
+.venv\Scripts\activate
+```
+
+**macOS / Linux:**
+
+```bash
+source .venv/bin/activate
+```
+
+### 3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Configure environment variables
+
+Create a `.env` file in the project root:
+
+```env
+OPENAI_API_KEY=your_api_key_here
+```
+
+Add any other environment variables required by your local configuration.
+
+> **Never commit your `.env` file or API keys to GitHub.**
+
+### 5. Run the application
+
+Use the appropriate command for your project:
+
+```bash
+python main.py
+```
+
+If ShaqoAI includes a separate frontend, install its dependencies and start it according to the frontend configuration.
+
+### Development
+
+To verify your Python environment:
+
+```bash
+python --version
+pip --version
+```
+
+To deactivate the virtual environment when finished:
+
+```bash
+deactivate
+```
