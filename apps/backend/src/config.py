@@ -18,6 +18,12 @@ class Settings(BaseSettings):
     google_client_id: str | None = None
     google_client_secret: str | None = None
     google_server_metadata_url: str = "https://accounts.google.com/.well-known/openid-configuration"
+    openai_api_key: str | None = None
+    support_model: str = "gpt-4.1-mini"
+    whatsapp_verify_token: str | None = None
+    whatsapp_app_secret: str | None = None
+    whatsapp_access_token: str | None = None
+    whatsapp_graph_version: str = "v22.0"
 
     @field_validator("jwt_secret")
     @classmethod

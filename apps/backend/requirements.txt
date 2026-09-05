@@ -13,4 +13,5 @@ celery[redis]>=5.4,<6.0
 authlib>=1.4,<2.0
 itsdangerous>=2.2,<3.0
 httpx>=0.28,<1.0
+openai>=1.0,<2.0
 pytest>=8.3,<9.0

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../app/colors.dart';
+import '../services/shaqoai_api.dart';
 import '../widgets/ui.dart';
 import 'approval_sheet.dart';
 
@@ -12,6 +13,13 @@ class FinanceLedgerScreen extends StatefulWidget {
 
 class _FinanceLedgerScreenState extends State<FinanceLedgerScreen> {
   String filter = 'All';
+  late final Future<List<SupportConversation>> _supportConversations;
+
+  @override
+  void initState() {
+    super.initState();
+    _supportConversations = ShaqoAiApi().supportConversations();
+  }
   @override
   Widget build(BuildContext context) {
     const rows = [
@@ -110,16 +118,19 @@ class _FinanceLedgerScreenState extends State<FinanceLedgerScreen> {
                 ])))),
       const SizedBox(height: 22),
       const TitleRow('WhatsApp pipeline', ''),
-      Glass(
-          child: const Column(children: [
-        ActivityEvent('09:47', 'Sales Agent', 'Lead follow-up sent', appCyan),
-        Divider(),
-        ActivityEvent(
-            '09:39', 'Support Agent', 'Payment question resolved', appGreen),
-        Divider(),
-        ActivityEvent('09:28', 'Finance Agent', 'Receipt delivered to customer',
-            appViolet)
-      ])),
+      FutureBuilder<List<SupportConversation>>(
+          future: _supportConversations,
+          builder: (context, snapshot) {
+            if (snapshot.hasError) return const Glass(child: Text('Support conversations could not be loaded.'));
+            if (!snapshot.hasData) return const Glass(child: Padding(padding: EdgeInsets.all(8), child: Center(child: CircularProgressIndicator())));
+            if (snapshot.data!.isEmpty) return const Glass(child: Text('Connect your workspace session to view live WhatsApp conversations.'));
+            return Glass(child: Column(children: [
+              for (final item in snapshot.data!) ...[
+                ActivityEvent('Live', item.sender, item.message, item.status == 'active' ? appGreen : appAmber),
+                const Divider(),
+              ],
+            ]));
+          }),
     ]);
   }
 }

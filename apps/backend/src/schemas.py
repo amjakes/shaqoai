@@ -62,3 +62,31 @@ class ErrorResponse(BaseModel):
 class HealthResponse(BaseModel):
     status: str
     timestamp: datetime
+
+
+class WhatsAppChannelCreateRequest(BaseModel):
+    phone_number_id: str = Field(min_length=3, max_length=128)
+    display_name: str = Field(min_length=1, max_length=120)
+
+
+class WhatsAppChannelResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+    id: uuid.UUID
+    phone_number_id: str
+    display_name: str
+    is_active: bool
+
+
+class SupportConversationResponse(BaseModel):
+    id: uuid.UUID
+    sender: str
+    last_message: str
+    status: str
+    consent_status: str
+    updated_at: datetime
+
+
+class SupportDashboardResponse(BaseModel):
+    open_escalations: int
+    opted_out_contacts: int
+    conversations: list[SupportConversationResponse]

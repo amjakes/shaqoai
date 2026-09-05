@@ -24,6 +24,11 @@ class ApprovalStatus(str, enum.Enum):
     rejected = "rejected"
 
 
+class ConsentStatus(str, enum.Enum):
+    opted_in = "opted_in"
+    opted_out = "opted_out"
+
+
 class Timestamped:
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
@@ -77,6 +82,7 @@ class Conversation(WorkspaceScoped, Base):
     channel: Mapped[str] = mapped_column(String(60), nullable=False)
     external_id: Mapped[str | None] = mapped_column(String(255), index=True)
     summary: Mapped[str | None] = mapped_column(Text)
+    consent_status: Mapped[ConsentStatus] = mapped_column(Enum(ConsentStatus, name="consent_status"), default=ConsentStatus.opted_in, nullable=False)
 
 
 class Task(WorkspaceScoped, Base):
@@ -117,3 +123,25 @@ class KnowledgeDocument(WorkspaceScoped, Base):
     source_name: Mapped[str] = mapped_column(String(255), nullable=False)
     content: Mapped[str] = mapped_column(Text, nullable=False)
     embedding: Mapped[list[float] | None] = mapped_column(Vector(1536))
+
+
+class WhatsAppChannel(WorkspaceScoped, Base):
+    __tablename__ = "whatsapp_channels"
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    phone_number_id: Mapped[str] = mapped_column(String(128), unique=True, nullable=False)
+    display_name: Mapped[str] = mapped_column(String(120), nullable=False)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+
+
+class WhatsAppEvent(WorkspaceScoped, Base):
+    __tablename__ = "whatsapp_events"
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    event_id: Mapped[str] = mapped_column(String(255), unique=True, nullable=False)
+    channel_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("whatsapp_channels.id", ondelete="CASCADE"), nullable=False, index=True)
+    conversation_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("conversations.id", ondelete="SET NULL"), index=True)
+    sender: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
+    message_text: Mapped[str] = mapped_column(Text, nullable=False)
+    event_type: Mapped[str] = mapped_column(String(40), default="inbound", nullable=False)
+    delivery_status: Mapped[str] = mapped_column(String(40), default="received", nullable=False)
+    failure_count: Mapped[int] = mapped_column(default=0, nullable=False)
+    raw_payload: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)

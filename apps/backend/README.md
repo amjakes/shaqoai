@@ -1,4 +1,4 @@
-# ShaqoAI backend — Stage 1
+# ShaqoAI backend — Stages 1–2
 
 ## Local secure stack
 
@@ -28,3 +28,9 @@ python -m compileall -q src
 python -m alembic heads
 python -m pip check
 ```
+
+## Stage 2 WhatsApp support setup
+
+Set `WHATSAPP_VERIFY_TOKEN`, `WHATSAPP_APP_SECRET`, and `WHATSAPP_ACCESS_TOKEN` in the deployment secret store, then configure Meta to call `GET` and `POST /api/v1/integrations/whatsapp/webhook`. Connect each Meta phone number to exactly one workspace through `POST /api/v1/workspace/whatsapp-channels` as an Owner or Admin.
+
+The support workflow only auto-replies to high-confidence public FAQs. Payment, account, security, deletion, legal, medical, complaint, and unclear messages create a workspace-scoped human-review task. `STOP` suppresses automated responses and `START` restores consent. Frontends read `/api/v1/support/conversations` using a bearer token and `X-Workspace-ID`; set `VITE_API_BASE_URL` for web and `SHAQOAI_API_URL`, `SHAQOAI_ACCESS_TOKEN`, and `SHAQOAI_WORKSPACE_ID` Dart defines for Flutter.
