@@ -53,4 +53,9 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: '3.12' }
       - run: pip install -r apps/backend/requirements.txt
-      - run: python -m compileall apps/backend/src
+      - working-directory: apps/backend
+        run: python -m compileall src
+      - working-directory: apps/backend
+        run: python -m pytest -q
+      - working-directory: apps/backend
+        run: python -m alembic heads
