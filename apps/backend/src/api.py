@@ -10,8 +10,9 @@ from sqlalchemy.orm import Session
 
 from .config import get_settings
 from .database import get_db
-from .models import AuditLog, ConsentStatus, Conversation, Task, User, WhatsAppChannel, WhatsAppEvent, Workspace, WorkspaceMembership, WorkspaceRole
-from .schemas import LoginRequest, MemberCreateRequest, MemberResponse, RegisterRequest, SupportConversationResponse, SupportDashboardResponse, TokenResponse, UserResponse, WhatsAppChannelCreateRequest, WhatsAppChannelResponse, WorkspaceCreateRequest, WorkspaceResponse
+from .models import AgentRunAudit, AuditLog, ConsentStatus, Conversation, Task, User, WhatsAppChannel, WhatsAppEvent, Workspace, WorkspaceMembership, WorkspaceRole
+from .rag import ingest_text, retrieve
+from .schemas import KnowledgeCitation, KnowledgeIngestRequest, KnowledgeIngestResponse, KnowledgeSearchRequest, LoginRequest, MemberCreateRequest, MemberResponse, RegisterRequest, SupportConversationResponse, SupportDashboardResponse, TokenResponse, UserResponse, WhatsAppChannelCreateRequest, WhatsAppChannelResponse, WorkspaceCreateRequest, WorkspaceResponse
 from .security import create_access_token, current_user, hash_password, require_role, verify_password, workspace_member
 from .whatsapp import inbound_messages, verify_challenge, verify_signature
 from .worker import process_whatsapp_event
@@ -190,3 +191,29 @@ def support_dashboard(membership: WorkspaceMembership = Depends(workspace_member
     opted_out = db.scalar(select(func.count()).select_from(Conversation).where(Conversation.workspace_id == workspace_id, Conversation.channel == "whatsapp", Conversation.consent_status == ConsentStatus.opted_out)) or 0
     conversations = support_conversations(10, membership, db)
     return SupportDashboardResponse(open_escalations=escalations, opted_out_contacts=opted_out, conversations=conversations)
+
+
+@router.post("/knowledge/ingest", response_model=KnowledgeIngestResponse, status_code=status.HTTP_201_CREATED)
+def ingest_knowledge(payload: KnowledgeIngestRequest, request: Request, membership: WorkspaceMembership = Depends(require_role(WorkspaceRole.manager)), db: Session = Depends(get_db)):
+    try:
+        source, count = ingest_text(db, membership.workspace_id, membership.user_id, payload.name, payload.content)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
+    audit(db, membership.workspace_id, "knowledge.ingested", membership.user_id, {"source_id": str(source.id), "chunks": count, "request_id": request.state.request_id})
+    db.commit()
+    return KnowledgeIngestResponse(source_id=source.id, chunks_created=count)
+
+
+@router.post("/knowledge/search", response_model=list[KnowledgeCitation])
+def search_knowledge(payload: KnowledgeSearchRequest, membership: WorkspaceMembership = Depends(workspace_member), db: Session = Depends(get_db)):
+    try:
+        citations = retrieve(db, membership.workspace_id, payload.query, payload.limit)
+    except RuntimeError as exc:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail=str(exc)) from exc
+    return [KnowledgeCitation(source_id=item.source_id, source_name=item.source_name, chunk_index=item.chunk_index, excerpt=item.excerpt) for item in citations]
+
+
+@router.get("/audit/agent-runs")
+def list_agent_run_audits(limit: int = Query(50, ge=1, le=200), membership: WorkspaceMembership = Depends(require_role(WorkspaceRole.admin)), db: Session = Depends(get_db)):
+    rows = db.scalars(select(AgentRunAudit).where(AgentRunAudit.workspace_id == membership.workspace_id).order_by(AgentRunAudit.created_at.desc()).limit(limit)).all()
+    return [{"id": str(row.id), "run_id": row.run_id, "prompt_version": row.prompt_version, "outcome": row.outcome, "retrieved_sources": row.retrieved_sources, "tools_called": row.tools_called, "tool_parameters": row.tool_parameters, "approval_decision": row.approval_decision, "created_at": row.created_at} for row in rows]

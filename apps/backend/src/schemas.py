@@ -90,3 +90,25 @@ class SupportDashboardResponse(BaseModel):
     open_escalations: int
     opted_out_contacts: int
     conversations: list[SupportConversationResponse]
+
+
+class KnowledgeIngestRequest(BaseModel):
+    name: str = Field(min_length=1, max_length=255)
+    content: str = Field(min_length=1, max_length=1_000_000)
+
+
+class KnowledgeIngestResponse(BaseModel):
+    source_id: uuid.UUID
+    chunks_created: int
+
+
+class KnowledgeCitation(BaseModel):
+    source_id: uuid.UUID
+    source_name: str
+    chunk_index: int
+    excerpt: str
+
+
+class KnowledgeSearchRequest(BaseModel):
+    query: str = Field(min_length=1, max_length=4000)
+    limit: int = Field(default=5, ge=1, le=10)

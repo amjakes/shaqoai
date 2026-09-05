@@ -20,8 +20,11 @@ def process_workspace_task(self, workspace_id: str, task_id: str) -> dict[str, s
 def process_whatsapp_event(self, event_id: str) -> dict[str, str]:
     """Idempotent background boundary for the one-message support DAG."""
     from .database import SessionLocal
+    from .audit import record_agent_run
     from .models import AuditLog, ConsentStatus, Conversation, Task, WhatsAppChannel, WhatsAppEvent
-    from .support_workflow import route_message
+    from .prompt_security import appears_injected
+    from .rag import retrieve
+    from .support_workflow import is_sensitive, route_message
 
     with SessionLocal() as db:
         event = db.get(WhatsAppEvent, uuid.UUID(event_id))
@@ -34,7 +37,22 @@ def process_whatsapp_event(self, event_id: str) -> dict[str, str]:
             db.add(conversation)
             db.flush()
         event.conversation_id = conversation.id
-        decision = route_message(event.message_text)
+        try:
+            sources = [] if appears_injected(event.message_text) or is_sensitive(event.message_text) else retrieve(db, event.workspace_id, event.message_text)
+        except Exception:
+            sources = []  # A retrieval outage fails closed into the human-review route.
+        decision = route_message(event.message_text, sources)
+        record_agent_run(
+            db,
+            workspace_id=event.workspace_id,
+            run_id=event.event_id,
+            prompt_version="support-v2-rag-boundary",
+            outcome=decision.outcome,
+            sources=sources,
+            tools_called=["knowledge_retrieval"] if sources else [],
+            tool_parameters={"top_k": 5},
+            approval_decision={"human_review_required": decision.outcome == "escalate", "reason": decision.reason},
+        )
         if decision.outcome == "opt_out":
             conversation.consent_status = ConsentStatus.opted_out
         elif decision.outcome == "opt_in":

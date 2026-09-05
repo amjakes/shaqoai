@@ -125,6 +125,26 @@ class KnowledgeDocument(WorkspaceScoped, Base):
     embedding: Mapped[list[float] | None] = mapped_column(Vector(1536))
 
 
+class KnowledgeSource(WorkspaceScoped, Base):
+    __tablename__ = "knowledge_sources"
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    source_type: Mapped[str] = mapped_column(String(40), default="text", nullable=False)
+    content_hash: Mapped[str] = mapped_column(String(64), nullable=False)
+    created_by: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    __table_args__ = (UniqueConstraint("workspace_id", "content_hash", name="uq_knowledge_source_content"),)
+
+
+class KnowledgeChunk(WorkspaceScoped, Base):
+    __tablename__ = "knowledge_chunks"
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    source_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("knowledge_sources.id", ondelete="CASCADE"), nullable=False, index=True)
+    chunk_index: Mapped[int] = mapped_column(nullable=False)
+    content: Mapped[str] = mapped_column(Text, nullable=False)
+    embedding: Mapped[list[float]] = mapped_column(Vector(1536), nullable=False)
+    __table_args__ = (UniqueConstraint("source_id", "chunk_index", name="uq_knowledge_chunk_position"),)
+
+
 class WhatsAppChannel(WorkspaceScoped, Base):
     __tablename__ = "whatsapp_channels"
     id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -145,3 +165,19 @@ class WhatsAppEvent(WorkspaceScoped, Base):
     delivery_status: Mapped[str] = mapped_column(String(40), default="received", nullable=False)
     failure_count: Mapped[int] = mapped_column(default=0, nullable=False)
     raw_payload: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)
+
+
+class AgentRunAudit(Base):
+    """Append-only evidence for an agent run; writes are enforced in PostgreSQL."""
+    __tablename__ = "agent_run_audits"
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    workspace_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("workspaces.id", ondelete="CASCADE"), nullable=False, index=True)
+    actor_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("users.id", ondelete="SET NULL"))
+    run_id: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
+    prompt_version: Mapped[str] = mapped_column(String(100), nullable=False)
+    retrieved_sources: Mapped[list] = mapped_column(JSON, default=list, nullable=False)
+    tools_called: Mapped[list] = mapped_column(JSON, default=list, nullable=False)
+    tool_parameters: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)
+    approval_decision: Mapped[dict] = mapped_column(JSON, default=dict, nullable=False)
+    outcome: Mapped[str] = mapped_column(String(60), nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

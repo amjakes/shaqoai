@@ -20,6 +20,7 @@ class Settings(BaseSettings):
     google_server_metadata_url: str = "https://accounts.google.com/.well-known/openid-configuration"
     openai_api_key: str | None = None
     support_model: str = "gpt-4.1-mini"
+    embedding_model: str = "text-embedding-3-small"
     whatsapp_verify_token: str | None = None
     whatsapp_app_secret: str | None = None
     whatsapp_access_token: str | None = None
